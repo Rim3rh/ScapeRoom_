@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PortalBScript : MonoBehaviour
 {
-    public GameObject _portalA;
+    private GameObject _portalA;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _portalA = GameObject.Find("Portal_A(Clone)");
     }
 
     // Update is called once per frame

@@ -6,7 +6,7 @@ public class PortalGunScript : MonoBehaviour
 {
     public GameObject _shootPos;
     public LineRenderer _lineRenderer;
-    public GameObject _portal1;
+    public GameObject _portalA, _portalB;
     void Start()
     {
         _lineRenderer.enabled = enabled;
@@ -15,9 +15,8 @@ public class PortalGunScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            Debug.Log("asd");
             Shoot();
         }
     }
@@ -35,7 +34,25 @@ public class PortalGunScript : MonoBehaviour
     {
         if (hit.transform.CompareTag("CanSpawn"))
         {
-            Instantiate(_portal1, hit.point, Quaternion.identity);
+            Debug.Log("AGOLA");
+            switch (GameManager.Instance._potalsSpawned)
+            {
+                case 1:
+                    Instantiate(_portalA, hit.point, Quaternion.identity);
+                    GameManager.Instance._potalsSpawned = 2;
+                    break;
+
+                case 2:
+                    Instantiate(_portalB, hit.point, Quaternion.identity);
+                    GameManager.Instance._potalsSpawned = 3;
+                    break;
+                case 3:
+                    Debug.Log("fASFD");
+                    Destroy(GameObject.Find("Portal_A(Clone)"));
+                    Destroy(GameObject.Find("Portal_B(Clone)"));
+                    GameManager.Instance._potalsSpawned = 1;
+                    break;
+            }
         }
     }
 

@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class PortalAScript : MonoBehaviour
 {
-    public GameObject _portalB;
+    private GameObject _portalB;
     void Start()
     {
-        
+        _portalB = GameObject.Find("Portal_B(Clone)");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
     private void OnTriggerEnter(Collider other)
     {
