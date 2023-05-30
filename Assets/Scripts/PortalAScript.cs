@@ -5,9 +5,11 @@ using UnityEngine;
 public class PortalAScript : MonoBehaviour
 {
     private GameObject _portalB;
+    private GameObject _portalBExit;
     void Start()
     {
-        _portalB = GameObject.Find("Portal_B(Clone)");
+        
+        
     }
 
     // Update is called once per frame
@@ -16,10 +18,13 @@ public class PortalAScript : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("CanPass"))
+        if (other.gameObject.layer == 8)
         {
+            _portalB = GameObject.Find("Portal_B(Clone)");
+            _portalBExit = _portalB.transform.GetChild(0).gameObject;
+            
             Rigidbody _rb =  other.GetComponent<Rigidbody>();
-            other.transform.position = _portalB.transform.position;
+            other.transform.position = _portalBExit.transform.position;
             _rb.velocity = _portalB.transform.forward * _rb.velocity.y;
         }
     }
