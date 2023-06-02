@@ -12,6 +12,11 @@ TagManager:
   - SecondDoor
   - Map
   - ThirdDoor
+  - RoomCollider
+  - DeathZone
+  - PressurePlate1
+  - Shooteable
+  - NotShooteable
   layers:
   - Default
   - TransparentFX
