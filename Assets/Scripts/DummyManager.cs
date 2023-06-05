@@ -6,6 +6,7 @@ public class DummyManager : MonoBehaviour
 {
     private Animator _anim;
     private Collider _colider;
+    public bool _during;
     void Start()
     {
         _anim = GetComponent<Animator>();
@@ -16,10 +17,7 @@ public class DummyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K) && CompareTag("Shooteable"))
-        {
-            Hit();
-        }
+
     }
 
     public void StartShootC()
@@ -53,10 +51,10 @@ public class DummyManager : MonoBehaviour
 
     public void TagToShoteable()
     {
-        tag = "Shooteable";
+        transform.GetChild(2).tag = "Shooteable";
     }
     public void TagToNotShoteable()
     {
-        tag = "NotShooteable";
+        transform.GetChild(2).tag = "NotShooteable";
     }
 }

@@ -17,6 +17,9 @@ TagManager:
   - PressurePlate1
   - Shooteable
   - NotShooteable
+  - Dummy
+  - ShootToStart
+  - Difficulty
   layers:
   - Default
   - TransparentFX

@@ -5,12 +5,12 @@ using UnityEngine;
 public class RoomManager : MonoBehaviour
 {
 
-    public GameObject _doorOne, _doorTwo, _doorThree, _doorFour;
-    private int _contOne, _contTwo, _contThree, _contFour;
+    public GameObject _doorOne, _doorTwo, _doorThree, _doorFour, _finalDoor;
+    private int _contOne, _contTwo, _contThree, _contFour, _contFive;
     public int _room2Counter, _room3Counter;
     public AudioSource _roomCompleted;
     //lights
-    public Renderer _roomOneLight, _roomTwoLight, _roomThreeLight, _roomFourLight;
+    public Renderer _roomOneLight, _roomTwoLight, _roomThreeLight, _roomFourLight, _finalRoomLight;
     public Material _green;
 
     // Update is called once per frame
@@ -56,6 +56,18 @@ public class RoomManager : MonoBehaviour
             _doorFour.GetComponent<DoorsScript>().OpenDoor();
             _roomFourLight.material = _green;
             _contFour++;
+        }
+
+
+        //FinalRoom
+
+        if (GameManager.Instance._hitCount > 14) GameManager.Instance._finalRoomComplete = true;
+        if (GameManager.Instance._finalRoomComplete && _contFive < 1)
+        {
+            _roomCompleted.Play();
+            _doorFour.GetComponent<DoorsScript>().OpenDoor();
+            _finalRoomLight.material = _green;
+            _contFive++;
         }
 
     }
